@@ -11,7 +11,7 @@ python main.py --data-path mental-state.csv --model 1
 To test the model add --test option at the end.
 
 model options: 
-  1: One-dimensional Convolution
+  1: One-dimensional Convolution,
   3: DNN(Deep Neural Network)
   
 
