@@ -10,10 +10,9 @@ python main.py --data-path mental-state.csv --model 1
 
 To test the model add --test option at the end.
 
-model options: 
+model options:
   1: One-dimensional Convolution,
-  3: DNN(Deep Neural Network)
-  
+  3: DNN(Deep Neural Network)  
 
 Data options: 
   emotions.csv: https://www.kaggle.com/datasets/birdy654/eeg-brainwave-dataset-feeling-emotions
