@@ -5,7 +5,7 @@ Description: This code is to investigate if a linear predictive coding done on E
 <h2>How to train</h2>
 
 ```
-python main.py --data_path mental-state.csv --model 1
+python main.py --data-path mental-state.csv --model 1
 ```
 
 To test the model add --test option at the end.
