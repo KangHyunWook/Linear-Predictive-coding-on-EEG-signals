@@ -110,11 +110,11 @@ def levinson_1d(r, order):
     return a, e, k
 
 def lpc(wave, order):
-    """Compute LPC of the waveform. 
+    """Compute LPC of the waveform.
     a: the LPC coefficients
     e: the total error
     k: the reflection coefficients
-    
+
     Typically only a is required.
     """
     # only use right half of autocorrelation, normalised by total length
@@ -135,7 +135,7 @@ def lpc_vocode(
     """
     Apply LPC vocoding to a pair of signals using 50% overlap-add Hamming window resynthesis
     The modulator `wave` is applied to the carrier `imposed`
-    
+
     Parameters:
     ---
     wave: modulator wave
@@ -143,7 +143,7 @@ def lpc_vocode(
     order: LPC order (typically 2-30)
     carrier: carrier signal; should be at least as long as wave
     residual_amp: amplitude of LPC residual to include in output
-    vocode_amp: amplitude of vocoded signal 
+    vocode_amp: amplitude of vocoded signal
     env: if True, the original volume envelope of wave is imposed on the output
           otherwise, no volume modulation is applied
     freq_shift: (default 1.0) shift the frequency of the resonances by the given scale factor. Warning :
@@ -198,10 +198,12 @@ def getModulatedData(data):
     for d in data:
         modulated = lpc_vocode(d, frame_len=window, order=order,
                     carrier=carrier, residual_amp=0, vocode_amp=1, env=True, freq_shift=1)
-                    
+
         modulated_features.append(modulated)
-    
+
     return np.array(modulated_features)
+
+import os
 
 def loadData(args):
     pd_data = pd.read_csv(args.data_path)
@@ -212,16 +214,16 @@ def loadData(args):
     # print(data[:10])
     # print(np.max(data),np.min(data))
     # exit()
-    
+
     data=scaler.fit_transform(data)
     if args.model=='1':
         data=data.reshape(data.shape+(1,))
     labels=pd_data.iloc[:,-1].values
-   
-    if args.data_path=='emotions.csv':
+
+    if args.data_path.split(os.path.sep)[-1]=='emotions.csv':
         le=LabelEncoder()
         labels=le.fit_transform(labels)
-            
+
     return data, labels
 
 def splitTrainTestData(data, labels):
