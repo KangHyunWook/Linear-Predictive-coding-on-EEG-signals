@@ -10,6 +10,9 @@ python main.py --data-path [data_path] --model 1
 
 To test the model add --test option at the end.
 
+[data_path] points to the full path of emotions.csv
+e.g. /home/jeff/data/emotions.csv
+
 model options:
   1: One-dimensional Convolution,
   3: DNN(Deep Neural Network)  
